@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<versions>
+	<tool>
+		<name>nPgDump</name>
+		<version>
+			<info>Stable</info>
+			<number>1.0</number>
+			<date>2009-12-10</date>
+			<link>http://www.google.fr</link>
+		</version>
+		<version>
+			<info>Dev</info>
+			<number>1.0 beta 3</number>
+			<date>2009-12-15</date>
+			<link>http://www.google.dev.fr</link>
+		</version>
+	</tool>
+	<tool>
+		<name>nPgRestore</name>
+		<version>
+			<info>Stable</info>
+			<number>1.1</number>
+			<date>2009-13-10</date>
+			<link>http://www.npgrestore.fr</link>
+		</version>
+		<version>
+			<info>Dev</info>
+			<number>1.1 beta 3</number>
+			<date>2009-13-15</date>
+			<link>http://www.npgrestore.dev.fr</link>
+		</version>
+	</tool>
+	<tool>
+		<name>npgsql</name>
+		<version>
+			<info>Snapshot build</info>
+			<number>2.0.8+</number>
+			<date>2009-04-08</date>
+			<link>http://www.google.fr</link>
+		</version>
+	</tool>
+</versions>
