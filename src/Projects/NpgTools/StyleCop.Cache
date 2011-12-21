@@ -1,0 +1,87 @@
+<stylecopresultscache>
+  <version>10</version>
+  <sourcecode name="Check.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>10/29/2009 08:55:06</timestamp>
+      <milliseconds>0</milliseconds>
+    </settings>
+    <timestamp>09/09/2010 00:07:50</timestamp>
+    <milliseconds>999</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Constants.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>10/29/2009 08:55:06</timestamp>
+      <milliseconds>0</milliseconds>
+    </settings>
+    <timestamp>09/09/2010 00:07:50</timestamp>
+    <milliseconds>999</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FileUtils.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>10/29/2009 08:55:06</timestamp>
+      <milliseconds>0</milliseconds>
+    </settings>
+    <timestamp>09/09/2010 00:07:50</timestamp>
+    <milliseconds>999</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Options.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>10/29/2009 08:55:06</timestamp>
+      <milliseconds>0</milliseconds>
+    </settings>
+    <timestamp>09/09/2010 00:07:50</timestamp>
+    <milliseconds>999</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NpgTools.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>10/29/2009 08:55:06</timestamp>
+      <milliseconds>0</milliseconds>
+    </settings>
+    <timestamp>09/09/2010 00:07:58</timestamp>
+    <milliseconds>999</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AssemblyInfo.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>10/29/2009 08:55:06</timestamp>
+      <milliseconds>0</milliseconds>
+    </settings>
+    <timestamp>02/09/2011 00:40:40</timestamp>
+    <milliseconds>999</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Utils.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>10/29/2009 08:55:06</timestamp>
+      <milliseconds>0</milliseconds>
+    </settings>
+    <timestamp>12/21/2011 10:50:27</timestamp>
+    <milliseconds>124</milliseconds>
+    <violations />
+  </sourcecode>
+  <project key="124748450">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+  <sourcecode name="NpgDump.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>10/29/2009 08:55:06</timestamp>
+      <milliseconds>0</milliseconds>
+    </settings>
+    <timestamp>12/21/2011 10:52:40</timestamp>
+    <milliseconds>977</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NpgRestore.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>10/29/2009 08:55:06</timestamp>
+      <milliseconds>0</milliseconds>
+    </settings>
+    <timestamp>12/21/2011 10:52:45</timestamp>
+    <milliseconds>714</milliseconds>
+    <violations />
+  </sourcecode>
+</stylecopresultscache>

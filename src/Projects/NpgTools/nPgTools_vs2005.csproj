@@ -1,0 +1,101 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D6CA167D-7258-42FC-A33F-E1448BC38913}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>nPgTools</RootNamespace>
+    <AssemblyName>nPgTools</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NpgRestore.cs" />
+    <Compile Include="NpgDump.cs" />
+    <Compile Include="NpgTools.cs" />
+    <Compile Include="common\Check.cs" />
+    <Compile Include="common\Constants.cs" />
+    <Compile Include="common\FileUtils.cs" />
+    <Compile Include="common\Options.cs" />
+    <Compile Include="common\Utils.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Libs\PostgreSQL\8.4\comerr32.dll">
+      <Link>PostgreSQL\comerr32.dll</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Libs\PostgreSQL\8.4\gssapi32.dll">
+      <Link>PostgreSQL\gssapi32.dll</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Libs\PostgreSQL\8.4\k5sprt32.dll">
+      <Link>PostgreSQL\k5sprt32.dll</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Libs\PostgreSQL\8.4\krb5_32.dll">
+      <Link>PostgreSQL\krb5_32.dll</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Libs\PostgreSQL\8.4\libeay32.dll">
+      <Link>PostgreSQL\libeay32.dll</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Libs\PostgreSQL\8.4\libiconv-2.dll">
+      <Link>PostgreSQL\libiconv-2.dll</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Libs\PostgreSQL\8.4\libintl-8.dll">
+      <Link>PostgreSQL\libintl-8.dll</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Libs\PostgreSQL\8.4\libpq.dll">
+      <Link>PostgreSQL\libpq.dll</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Libs\PostgreSQL\8.4\pgbench.exe">
+      <Link>PostgreSQL\pgbench.exe</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Libs\PostgreSQL\8.4\pg_dump.exe">
+      <Link>PostgreSQL\pg_dump.exe</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Libs\PostgreSQL\8.4\pg_dumpall.exe">
+      <Link>PostgreSQL\pg_dumpall.exe</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Libs\PostgreSQL\8.4\pg_restore.exe">
+      <Link>PostgreSQL\pg_restore.exe</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Libs\PostgreSQL\8.4\ssleay32.dll">
+      <Link>PostgreSQL\ssleay32.dll</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Libs\PostgreSQL\8.4\zlib1.dll">
+      <Link>PostgreSQL\zlib1.dll</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>mkdir "$(SolutionDir)..\Output"
+copy "$(TargetPath)" "$(SolutionDir)..\Output\$(TargetFileName)"</PostBuildEvent>
+  </PropertyGroup>
+</Project>
