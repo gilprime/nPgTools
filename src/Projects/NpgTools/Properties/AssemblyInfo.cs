@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("nPgTools")]
 [assembly: AssemblyProduct("nPgTools")]
-[assembly: AssemblyCopyright("Copyright © nPgTools 2011")]
+[assembly: AssemblyCopyright("Copyright © nPgTools 2012")]
 [assembly: AssemblyTrademark("nPgTools")]
 [assembly: AssemblyCulture("")]
 
@@ -43,7 +43,7 @@ using System.Runtime.InteropServices;
 //
 // Vous pouvez spécifier toutes les valeurs ou indiquer les numéros de build et de révision par défaut 
 // en utilisant '*', comme indiqué ci-dessous :
-[assembly: AssemblyVersion("1.0.0.84")]
-[assembly: AssemblyFileVersion("1.0.0.84")]
+[assembly: AssemblyVersion("0.1.0.8410")]
+[assembly: AssemblyFileVersion("0.1.0.8410")]
 
-[assembly: CLSCompliant(true)]
+[assembly: CLSCompliant(false)]
