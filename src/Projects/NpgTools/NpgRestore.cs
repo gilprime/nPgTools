@@ -13,6 +13,7 @@
 namespace NpgTools
 {
     using System;
+    using System.Data;
     using System.Data.Common;
     using System.Diagnostics;
     using System.IO;
@@ -28,7 +29,7 @@ namespace NpgTools
         /// This contains informations about the temporary
         /// directory used to make restore
         /// </summary>
-        private DirectoryInfo temporaryPath = null;
+        private DirectoryInfo temporaryPath;
 
         /// <summary>
         /// This function launch the restore process, with the NpgsqlConnection parameters. Restore
@@ -41,10 +42,10 @@ namespace NpgTools
         /// <param name="backupFile">The backup file to restore</param>
         /// <returns>Returns a Result that tells if operation succeeds</returns>
         public Result Restore(
-                                DbConnection connection,
+                                IDbConnection connection,
                                 string login,
                                 string password,
-                                FileInfo backupFile)
+                                FileSystemInfo backupFile)
         {
             IPAddress connectionIpAddress = IPAddress.None;
 
@@ -83,7 +84,7 @@ namespace NpgTools
                                 string databaseName,
                                 string login,
                                 string password,
-                                FileInfo backupFile)
+                                FileSystemInfo backupFile)
         {
             return this.Restore(
                     Constants.PostgreSQLDefaultIP,
@@ -110,7 +111,7 @@ namespace NpgTools
                                 string databaseName,
                                 string login,
                                 string password,
-                                FileInfo backupFile)
+                                FileSystemInfo backupFile)
         {
             this.CheckParameters(address, port, databaseName, login, backupFile);
             this.Prepare();
@@ -134,7 +135,7 @@ namespace NpgTools
                                         short port,
                                         string databaseName,
                                         string login,
-                                        FileInfo backupFile)
+                                        FileSystemInfo backupFile)
         {
             if (!NpgTools.Check.IsIPAddressValid(address))
             {
@@ -156,19 +157,26 @@ namespace NpgTools
                 return Result.InvalidLogin;
             }
 
-            if ((backupFile != null)
-                && (!string.IsNullOrEmpty(backupFile.FullName))
-                && File.Exists(backupFile.FullName))
+            string fullBackupFileName = backupFile != null ? backupFile.FullName : string.Empty;
+            if ((!string.IsNullOrEmpty(fullBackupFileName))
+                && File.Exists(fullBackupFileName))
             {
+                FileStream testReadFile = null;
                 try
                 {
-                    FileStream testReadFile = File.OpenRead(backupFile.FullName);
-                    testReadFile.Close();
-                    testReadFile.Dispose();
+                    testReadFile = File.OpenRead(fullBackupFileName);
                 }
                 catch (Exception)
                 {
                     return Result.CouldNotReadBackupFile;
+                }
+                finally
+                {
+                    if (testReadFile != null)
+                    {
+                        testReadFile.Close();
+                        testReadFile.Dispose();
+                    }
                 }
             }
 
@@ -206,20 +214,23 @@ namespace NpgTools
                                     string databaseName,
                                     string login,
                                     string password,
-                                    FileInfo backupFile)
+                                    FileSystemInfo backupFile)
         {
-            Process process = new Process();
-            process.StartInfo.FileName = this.temporaryPath.FullName + "\\pg_restore.exe";
-            process.StartInfo.UseShellExecute = false;
-            process.StartInfo.Arguments = " -p " + port;
-            process.StartInfo.Arguments += " -h " + address.ToString();
-            process.StartInfo.Arguments += " -U " + login;
-            process.StartInfo.Arguments += " -d " + databaseName; // Specify database bame
-            process.StartInfo.Arguments += " \"" + backupFile.FullName + "\"";
-            process.StartInfo.RedirectStandardError = true;
+            Process process = null;
 
             try
             {
+                process = new Process();
+                ProcessStartInfo informations = process.StartInfo;
+                informations.FileName = this.temporaryPath.FullName + "\\pg_restore.exe";
+                informations.UseShellExecute = false;
+                informations.Arguments = " -p " + port.ToString();
+                informations.Arguments += " -h " + address.ToString();
+                informations.Arguments += " -U " + login;
+                informations.Arguments += " -d " + databaseName; // Specify database bame
+                informations.Arguments += " \"" + backupFile.FullName + "\"";
+                informations.RedirectStandardError = true;
+
                 Environment.SetEnvironmentVariable("PGPASSWORD", password, EnvironmentVariableTarget.Process);
                 process.Start();
                 System.Threading.Thread.Sleep(1000);
@@ -229,6 +240,14 @@ namespace NpgTools
             catch
             {
                 return Result.Error;
+            }
+            finally
+            {
+                if (process != null)
+                {
+                    process.Close();
+                    process.Dispose();
+                }
             }
 
             if (process.ExitCode != 0)

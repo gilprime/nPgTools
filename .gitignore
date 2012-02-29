@@ -1,0 +1,10 @@
+
+src/Doc/Output
+src/Doc/StyleCop 4.7
+src/Doc/stylecopcli
+StyleCop.Cache
+*.FileListAbsolute.txt
+*.suo
+obj
+bin
+*.user

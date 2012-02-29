@@ -12,6 +12,7 @@
 
 namespace NpgTools
 {
+    using System.Data;
     using System.Data.Common;
     using System.IO;
 
@@ -34,12 +35,12 @@ namespace NpgTools
         /// <summary>
         /// This function returns login and password of user for a passed NpgsqlConnection
         /// </summary>
-        /// <param name="connection">the current opened NpgsqlConnection</param>
+        /// <param name="connection">the current opened DbConnection</param>
         /// <param name="login">returned login corresponding to the NpgsqlConnection passed</param>
         /// <param name="password">returned password corresponding to the NpgsqlConnection passed</param>
         /// <returns>true if succeed, false otherwise (connection null or not opened)</returns>
         public static bool GetConnectionInformationsFrom(
-                                      DbConnection connection,
+                                      IDbConnection connection,
                                       out string login,
                                       out string password)
         {
@@ -57,13 +58,13 @@ namespace NpgTools
                     bool result = builder.TryGetValue("User Id", out value);
                     if (result)
                     {
-                        login = (string)value;
+                        login = value.ToString();
                     }
 
                     result &= builder.TryGetValue("Password", out value);
                     if (result)
                     {
-                        password = (string)value;
+                        password = value.ToString();
                     }
 
                     builder.Clear();

@@ -7,7 +7,7 @@
     <ProjectGuid>{D6CA167D-7258-42FC-A33F-E1448BC38913}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>nPgTools</RootNamespace>
+    <RootNamespace>NpgTools</RootNamespace>
     <AssemblyName>nPgTools</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -28,10 +28,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="installations\PostgresqlInstallation.cs" />
+    <Compile Include="installations\PostgresqlInstallation_8_0.cs" />
+    <Compile Include="installations\PostgresqlInstallation_8_1.cs" />
+    <Compile Include="installations\PostgresqlInstallation_8_2.cs" />
+    <Compile Include="installations\PostgresqlInstallation_8_3.cs" />
+    <Compile Include="installations\PostgresqlInstallation_8_3_WinInst.cs" />
+    <Compile Include="installations\PostgresqlInstallation_8_4.cs" />
+    <Compile Include="installations\PostgresqlInstallation_9_0.cs" />
+    <Compile Include="installations\PostgresqlInstallation_9_1.cs" />
     <Compile Include="NpgRestore.cs" />
     <Compile Include="NpgDump.cs" />
     <Compile Include="NpgTools.cs" />
@@ -41,6 +55,8 @@
     <Compile Include="common\Options.cs" />
     <Compile Include="common\Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\Check_tests.cs" />
+    <Compile Include="Tests\Installations_tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\..\Libs\PostgreSQL\8.4\comerr32.dll">
@@ -72,9 +88,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="..\..\Libs\PostgreSQL\8.4\pg_dump.exe">
       <Link>PostgreSQL\pg_dump.exe</Link>
-    </EmbeddedResource>
-    <EmbeddedResource Include="..\..\Libs\PostgreSQL\8.4\pg_dumpall.exe">
-      <Link>PostgreSQL\pg_dumpall.exe</Link>
     </EmbeddedResource>
     <EmbeddedResource Include="..\..\Libs\PostgreSQL\8.4\pg_restore.exe">
       <Link>PostgreSQL\pg_restore.exe</Link>
